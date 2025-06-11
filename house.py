@@ -18,7 +18,7 @@ input_4 = st.number_input("Average no. of bedrooms in ur house",min_value=0.0)
 input_5 = st.number_input("Population in Your Locality",min_value=0.0)
 input_6 = st.number_input("Average Occupation",min_value=0.0)
 input_7 = st.number_input("Your Latitude",format="%.6f")
-input_8 = st.number_input("Your Longititude",format="%.6f")
+input_8 = st.number_input("Your Longitude",format="%.6f")
 
 
 try:
@@ -32,9 +32,9 @@ if st.button("Predict"):
     try:
         features=np.array([[input_1,input_2,input_3,input_4,input_5,input_6,input_7,input_8]])
         prediction = model.predict(features)[0]
-        st.success(f"The predicted House Price (in USD) : $ {int(prediction[0]*100000)}")
+        st.success(f"The predicted House Price (in USD) : $ {int(prediction*100000)}")
     except Exception as e:
-        st.error("The prediction failed : {e}")
+        st.error(f"The prediction failed : {e}")
 
 
 
